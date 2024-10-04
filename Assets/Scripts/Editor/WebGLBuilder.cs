@@ -2,15 +2,16 @@
 
 using JetBrains.Annotations;
 using UnityEditor;
-using UnityEngine;
+// ReSharper disable CheckNamespace
 
 [UsedImplicitly]
 public static class WebGLBuilder
 {
+    [UsedImplicitly]
     public static void Build()
     {
         string[] scenes = { "Assets/Scenes/SampleScene.unity" };
-        BuildPipeline.BuildPlayer(scenes, "Build", BuildTarget.WebGL, BuildOptions.None);
+        BuildPipeline.BuildPlayer(scenes, "/Users/mbp/Projects/LD56-Meta/webgl_build", BuildTarget.WebGL, BuildOptions.None);
     }
 }
 
