@@ -1,5 +1,26 @@
 {
   "dependencies": {
+    "com.cysharp.messagepipe": {
+      "version": "https://github.com/Cysharp/MessagePipe.git?path=src/MessagePipe.Unity/Assets/Plugins/MessagePipe",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "cd2b1459035aa7ff59924913f09c467adf72412f"
+    },
+    "com.cysharp.messagepipe.vcontainer": {
+      "version": "https://github.com/Cysharp/MessagePipe.git?path=src/MessagePipe.Unity/Assets/Plugins/MessagePipe.VContainer",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "cd2b1459035aa7ff59924913f09c467adf72412f"
+    },
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "7c0f199fe0d3fc528024488ccd671e6c7b27745b"
+    },
     "com.unity.2d.animation": {
       "version": "10.1.3",
       "depth": 1,
@@ -303,6 +324,13 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "jp.hadashikick.vcontainer": {
+      "version": "https://github.com/hadashiA/VContainer.git?path=VContainer/Assets/VContainer#1.16.2",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "fbc5b06545695cc964142f33aa2443e337b38d5c"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",

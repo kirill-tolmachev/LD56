@@ -10,7 +10,7 @@ public static class WebGLBuilder
     [UsedImplicitly]
     public static void Build()
     {
-        string[] scenes = { "Assets/Scenes/SampleScene.unity" };
+        string[] scenes = { "Assets/Game/Scenes/MainScene.unity" };
         BuildPipeline.BuildPlayer(scenes, "/Users/mbp/Projects/LD56-Meta/webgl_build", BuildTarget.WebGL, BuildOptions.None);
     }
 }
