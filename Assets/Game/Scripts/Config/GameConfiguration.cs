@@ -9,11 +9,17 @@ namespace Game.Scripts.Config
     {
         public float PlayerSpeed = 20f;
         public float PlayerRadius = 0.5f;
-        
+        public float OutTubeShotInterval;
         public float ProjectileSpeed = 10f;
         
         [Header("Prefabs")]
         public Projectile ProjectilePrefab;
         public ProjectileBBox ProjectileBBoxPrefab;
+        public Fill FillPrefab;
+        
+        public Woo Woo1;
+        
+        [Header("Particles")]
+        public ParticleSystem WooDestroyedParticlePrefab;
     }
 }

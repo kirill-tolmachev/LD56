@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerSpeed: 20
   PlayerRadius: 0.5
+  OutTubeShotInterval: 0.2
   ProjectileSpeed: 10
   ProjectilePrefab: {fileID: -8021318568773682641, guid: 2a484578348d640d4a3d16f11b059318, type: 3}
   ProjectileBBoxPrefab: {fileID: 5596598118054252149, guid: 2f07aa5eb83bb4aa3a96d5aee0d715b5, type: 3}
+  FillPrefab: {fileID: 0}
+  Woo1: {fileID: 4138506072034997493, guid: 0e8a3542e931143408048a94cca3e525, type: 3}
+  WooDestroyedParticlePrefab: {fileID: 3366300129327969660, guid: e0389d8f622964b5a89358ce9a58e3aa, type: 3}

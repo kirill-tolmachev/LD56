@@ -1,4 +1,5 @@
 using Game.Scripts.Config;
+using Game.Scripts.Entities;
 using UnityEngine;
 using VContainer;
 
@@ -13,14 +14,16 @@ namespace Game.Scripts
         private PlayerState _playerState;
         private Camera _mainCamera;
         private GameConfiguration _gameConfiguration;
+        private Press _press;
         
         [Inject]
-        public void Construct(WorldBounds worldBounds, PlayerState playerState, Camera mainCamera, GameConfiguration gameConfiguration)
+        public void Construct(WorldBounds worldBounds, PlayerState playerState, Camera mainCamera, GameConfiguration gameConfiguration, Press press)
         {
             _worldBounds = worldBounds;
             _playerState = playerState;
             _mainCamera = mainCamera;
             _gameConfiguration = gameConfiguration;
+            _press = press;
         }
         
         private void Update()
@@ -37,6 +40,11 @@ namespace Game.Scripts
             var mouseWorldPosition = _mainCamera.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, _mainCamera.nearClipPlane));
             _playerState.AimPosition = mouseWorldPosition;
             Debug.DrawLine(_player.position, _playerState.AimPosition, Color.red);
+            
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                _press.DoPress();
+            }
 
         }
     }
