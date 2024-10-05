@@ -37,11 +37,16 @@ namespace Game.Scripts.Systems
             _woos.Clear();
         }
         
-        public Woo Create(int size, Vector3 position, Capsule capsule)
+        public Woo Create(WooType type, int size, Vector3 position, Capsule capsule = null, Slot slot = null)
         {
-            var prefab = GetPrefab(size);
+            var prefab = GetPrefab(type, size);
             var woo = _objectResolver.Instantiate(prefab, position, Quaternion.identity);
             woo.Capsule = capsule;
+            woo.Slot = slot;
+            
+            if (slot != null)
+                slot.Woo = woo;
+            
             _woos.Add(woo, Time.time);
             
             
@@ -60,32 +65,34 @@ namespace Game.Scripts.Systems
             return _woos.Keys;
         }
         
-        private Woo GetPrefab(int size)
+        private Woo GetPrefab(WooType type, int size)
         {
-            switch (size)
+            switch (type)
             {
-                case 1:
-                    return _gameConfiguration.Woo1;
+                case WooType.Circle:
+                    return _gameConfiguration.WooCircle;
+                case WooType.Square:
+                    return _gameConfiguration.WooSquare;
                 default:
-                    throw new System.NotImplementedException();
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
         }
 
         public void Tick()
         {
-            var expiredWoos = new List<Woo>();
-            foreach (var (woo, lifetime) in _woos)
-            {
-                if (Time.time - lifetime > woo.Lifetime)
-                {
-                    expiredWoos.Add(woo);
-                }
-            }
-            
-            foreach (var woo in expiredWoos)
-            {
-                Destroy(woo, false);
-            }
+            // var expiredWoos = new List<Woo>();
+            // foreach (var (woo, lifetime) in _woos)
+            // {
+            //     if (Time.time - lifetime > woo.Lifetime)
+            //     {
+            //         expiredWoos.Add(woo);
+            //     }
+            // }
+            //
+            // foreach (var woo in expiredWoos)
+            // {
+            //     Destroy(woo, false);
+            // }
         }
     }
 }

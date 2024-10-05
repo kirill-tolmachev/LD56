@@ -15,6 +15,7 @@ namespace Game.Scripts
         {
             builder.RegisterInstance(_gameConfiguration);
             builder.RegisterComponentInHierarchy<PlayerController>().AsSelf();
+            builder.RegisterComponentInHierarchy<DragDirectionArrow>().AsSelf();
             
             builder.RegisterInstance<PlayerState>(new PlayerState());
             builder.RegisterInstance<Camera>(Camera.main);
@@ -22,8 +23,9 @@ namespace Game.Scripts
             builder.RegisterEntryPoint<WooLifetimeSystem>().AsSelf();
             builder.RegisterEntryPoint<ParticleSpawnerSystem>().AsSelf();
             
-            builder.Register<LevelState>(Lifetime.Singleton);
-            builder.Register<ScoreSystem>(Lifetime.Singleton);
+            builder.Register<LevelState>(Lifetime.Singleton).AsSelf();
+            builder.Register<ScoreSystem>(Lifetime.Singleton).AsSelf();
+            builder.Register<MergeSystem>(Lifetime.Singleton).AsSelf();
         }
     }
 }

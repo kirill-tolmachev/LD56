@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Game.Scripts.Entities
@@ -31,6 +32,11 @@ namespace Game.Scripts.Entities
             }
 
             return totalNormalImpulse;
+        }
+
+        private void OnJointBreak2D(Joint2D brokenJoint)
+        {
+            _woo.Explode();
         }
     }
 }

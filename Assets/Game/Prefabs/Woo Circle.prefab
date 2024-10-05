@@ -112,9 +112,9 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 1638439672447278800}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0.15440297, y: 0.33194834}
@@ -133,12 +133,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 5817901186280582717}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.28200975, y: -0.37829176}
+  m_ConnectedAnchor: {x: 0.2820097, y: -0.37829182}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
@@ -154,12 +154,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 8394942010525154512}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.0956275, y: -0.37680763}
+  m_ConnectedAnchor: {x: -0.09562763, y: -0.37680763}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
@@ -287,12 +287,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 4886154073789216067}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.26121503, y: 0.39293894}
+  m_ConnectedAnchor: {x: 0.2612151, y: 0.39293882}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
@@ -308,12 +308,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 1248523564596406799}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.18679452, y: -0.31977513}
+  m_ConnectedAnchor: {x: 0.18679467, y: -0.319775}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
@@ -329,12 +329,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 8394942010525154512}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.3713082, y: 0.006121166}
+  m_ConnectedAnchor: {x: -0.37130827, y: 0.0061211674}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
@@ -652,12 +652,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 5817901186280582717}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.16431527, y: 0.33188668}
+  m_ConnectedAnchor: {x: 0.16431503, y: 0.33188668}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
@@ -673,12 +673,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 3922883360129432904}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.14622575, y: -0.34798527}
+  m_ConnectedAnchor: {x: 0.14622585, y: -0.34798566}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
@@ -694,12 +694,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 8394942010525154512}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.20149711, y: 0.33522984}
+  m_ConnectedAnchor: {x: -0.20149738, y: 0.3352299}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
@@ -914,12 +914,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 4675647280963754927}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.08511741, y: 0.33403772}
+  m_ConnectedAnchor: {x: 0.085117176, y: 0.33403772}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
@@ -935,12 +935,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 4886154073789216067}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.1787185, y: -0.31951484}
+  m_ConnectedAnchor: {x: 0.17871854, y: -0.31951487}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
@@ -956,12 +956,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 8394942010525154512}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.26637053, y: -0.32214987}
+  m_ConnectedAnchor: {x: 0.26637048, y: -0.32214987}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
@@ -1210,12 +1210,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 1248523564596406799}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.15572684, y: 0.34383842}
+  m_ConnectedAnchor: {x: 0.15572704, y: 0.3438388}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
@@ -1231,12 +1231,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 4675647280963754927}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.22539407, y: -0.36854595}
+  m_ConnectedAnchor: {x: 0.2253936, y: -0.36854598}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
@@ -1252,12 +1252,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 8394942010525154512}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.17224276, y: 0.3880905}
+  m_ConnectedAnchor: {x: 0.17224291, y: 0.38809052}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
@@ -1387,8 +1387,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7010876376087587316}
   - component: {fileID: 4138506072034997493}
+  - component: {fileID: 7698981595702583569}
   m_Layer: 3
-  m_Name: Woo 1
+  m_Name: Woo Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1404,7 +1405,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3923036236572363999}
@@ -1426,9 +1427,36 @@ MonoBehaviour:
   _pressureThreshold: 30
   _center: {fileID: 4185456418630178983}
   _lifetime: 15
+  _spriteRenderer: {fileID: 4042931492879440522}
+  _normalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  _highlightedMaterial: {fileID: 2100000, guid: 5a6db85ebb9466f4b90af9ebdd3c4fdc, type: 2}
+  Type: 0
+  Slot: {fileID: 0}
   Capsule: {fileID: 0}
   _explosionK: 0.8
   Colliders: []
+--- !u!95 &7698981595702583569
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6572436083396426940}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3b5896c4999cd421fbcae5f012fc61b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6779878475267694789
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,12 +1678,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 3922883360129432904}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.31876543, y: 0.2915771}
+  m_ConnectedAnchor: {x: 0.31876552, y: 0.29157668}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
@@ -1671,12 +1699,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 1638439672447278800}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.2142652, y: -0.2700306}
+  m_ConnectedAnchor: {x: 0.21426533, y: -0.27003038}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
@@ -1692,12 +1720,12 @@ SpringJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 8394942010525154512}
-  m_BreakForce: Infinity
+  m_BreakForce: 200
   m_BreakTorque: Infinity
-  m_BreakAction: 3
+  m_BreakAction: 1
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.37310544, y: 0.0056211557}
+  m_ConnectedAnchor: {x: 0.37310514, y: 0.0056211683}
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_DampingRatio: 0.5
