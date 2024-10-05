@@ -17,7 +17,8 @@ namespace Game.Scripts.Entities
         
         public float PressureThreshold => _pressureThreshold;
         public int Size => _size;
-        
+        public Capsule Capsule;
+
         [SerializeField] private float _explosionK = 1.5f;
         private bool _isExploding;
 
@@ -32,7 +33,7 @@ namespace Game.Scripts.Entities
         
         [Inject] private WooLifetimeSystem _wooLifetimeSystem;
         [Inject] private ScoreSystem _scoreSystem;
-
+        
         private void Update()
         {
             foreach (var joint in _joints)
@@ -53,8 +54,12 @@ namespace Game.Scripts.Entities
                 return;
             
             _isExploding = true;
-            _wooLifetimeSystem.Destroy(this, Color.black);
-            _scoreSystem.AddScore(this);
+            _wooLifetimeSystem.Destroy(this, true);
+
+            if (Capsule != null)
+            {
+                _scoreSystem.AddScore(Capsule, this);    
+            }
         }
     }
 }

@@ -37,18 +37,20 @@ namespace Game.Scripts.Systems
             _woos.Clear();
         }
         
-        public Woo Create(int size, Vector3 position)
+        public Woo Create(int size, Vector3 position, Capsule capsule)
         {
             var prefab = GetPrefab(size);
             var woo = _objectResolver.Instantiate(prefab, position, Quaternion.identity);
+            woo.Capsule = capsule;
             _woos.Add(woo, Time.time);
+            
             
             return woo;
         }
 
-        public void Destroy(Woo wood, Color explosionColor)
+        public void Destroy(Woo wood, bool fromPressure)
         {
-            _particleSpawnerSystem.SpawnWooDestroyedParticle(wood.Center.position, wood.Size, explosionColor);
+            _particleSpawnerSystem.SpawnWooDestroyedParticle(wood.Center.position, wood.Size, fromPressure);
             _woos.Remove(wood);
             UnityEngine.Object.Destroy(wood.gameObject);
         }
@@ -82,7 +84,7 @@ namespace Game.Scripts.Systems
             
             foreach (var woo in expiredWoos)
             {
-                Destroy(woo, Color.red);
+                Destroy(woo, false);
             }
         }
     }

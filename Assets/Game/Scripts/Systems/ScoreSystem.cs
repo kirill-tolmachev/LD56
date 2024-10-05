@@ -1,3 +1,4 @@
+using Game.Scripts.Config;
 using Game.Scripts.Entities;
 
 namespace Game.Scripts.Systems
@@ -5,18 +6,18 @@ namespace Game.Scripts.Systems
     public class ScoreSystem
     {
         private readonly LevelState _levelState;
-        private readonly Fill _fill;
+        private readonly GameConfiguration _gameConfiguration;
 
-        public ScoreSystem(LevelState levelState, Fill fill)
+        public ScoreSystem(LevelState levelState, GameConfiguration gameConfiguration)
         {
             _levelState = levelState;
-            _fill = fill;
+            _gameConfiguration = gameConfiguration;
         }
         
-        public void AddScore(Woo woo)
+        public void AddScore(Capsule capsule, Woo woo)
         {
-            _levelState.CurrentScore += woo.Size;
-            _fill.SetValue01(_levelState.CurrentScore / _levelState.MaxScore);
+            _levelState.CurrentScore += woo.Size * _gameConfiguration.WooSizeScoreMultiplier;
+            capsule.Fill.SetValue01(_levelState.CurrentScore / _levelState.MaxScore);
         }
     }
 }

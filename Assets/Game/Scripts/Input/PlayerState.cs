@@ -9,5 +9,7 @@ namespace Game.Scripts
         public float AimAngle => Vector3.Angle(AimPosition - Position, Vector3.up);
 
         public float ShotInterval => 1f;
+        public bool IsPressDown { get; set; }
+        public Vector3 PressPosition { get; set; }
     }
 }

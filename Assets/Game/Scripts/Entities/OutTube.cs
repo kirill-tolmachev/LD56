@@ -12,12 +12,18 @@ namespace Game.Scripts.Entities
         private float _lastShotTime;
         private WooLifetimeSystem _wooLifetimeSystem;
         private GameConfiguration _gameConfiguration;
+        private Capsule _capsule;
         
         [Inject]
         public void Construct(WooLifetimeSystem wooLifetimeSystem, GameConfiguration gameConfiguration)
         {
             _wooLifetimeSystem = wooLifetimeSystem;
             _gameConfiguration = gameConfiguration;
+        }
+
+        private void Awake()
+        {
+            _capsule = GetComponentInParent<Capsule>();
         }
         
         private void Update()
@@ -28,7 +34,7 @@ namespace Game.Scripts.Entities
             _lastShotTime = Time.time;
             
             var position = GunPoint.position;
-            _wooLifetimeSystem.Create(1, position);
+            _wooLifetimeSystem.Create(1, position, _capsule);
         }
     }
 }

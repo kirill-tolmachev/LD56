@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 480426197280611887}
   - component: {fileID: 8099803661413165319}
   - component: {fileID: 6139340607069529154}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bone_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 1416561719383119150}
   - component: {fileID: 2392589569180928136}
   - component: {fileID: 8448401190334683557}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bone_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 3890398465388464099}
   - component: {fileID: 8584703793893574816}
   - component: {fileID: 3935167911910556722}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5054145095032205965}
   - component: {fileID: 1195693715922995336}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 1268132793042352480}
   - component: {fileID: 6453623221582323959}
   - component: {fileID: 3643450035989000229}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bone_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -726,7 +726,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2260909651221861945}
   - component: {fileID: 2830251862562069716}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -818,7 +818,7 @@ GameObject:
   - component: {fileID: 299009552319415248}
   - component: {fileID: 837217221919126551}
   - component: {fileID: 764238244472335311}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bone_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -989,7 +989,7 @@ GameObject:
   - component: {fileID: 3923036236572363999}
   - component: {fileID: 4042931492879440522}
   - component: {fileID: 142027902764607028}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1114,7 +1114,7 @@ GameObject:
   - component: {fileID: 277088952974451617}
   - component: {fileID: 837524316216719787}
   - component: {fileID: 233973926520938552}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bone_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1285,7 +1285,7 @@ GameObject:
   - component: {fileID: 6759797420033457979}
   - component: {fileID: 7872387435414399736}
   - component: {fileID: 1084963801936309737}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1387,7 +1387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7010876376087587316}
   - component: {fileID: 4138506072034997493}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Woo 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1404,7 +1404,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 0.20000002, y: 0.20000002, z: 0.20000002}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3923036236572363999}
@@ -1425,8 +1425,9 @@ MonoBehaviour:
   _size: 1
   _pressureThreshold: 30
   _center: {fileID: 4185456418630178983}
-  _lifetime: 2
-  _explosionK: 0.6
+  _lifetime: 15
+  Capsule: {fileID: 0}
+  _explosionK: 0.8
   Colliders: []
 --- !u!1 &6779878475267694789
 GameObject:
@@ -1440,7 +1441,7 @@ GameObject:
   - component: {fileID: 475042211593046912}
   - component: {fileID: 8394942010525154512}
   - component: {fileID: 6614753814708667336}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bone_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1552,7 +1553,7 @@ GameObject:
   - component: {fileID: 2762856327907067063}
   - component: {fileID: 5335153293256242623}
   - component: {fileID: 4428930690756899865}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bone_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
