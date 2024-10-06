@@ -6,6 +6,7 @@ using Game.Scripts.Config;
 using Game.Scripts.Entities;
 using Game.Scripts.Util;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using VContainer;
 using VContainer.Unity;
 
@@ -68,9 +69,16 @@ namespace Game.Scripts.Systems
 
         public void Destroy(Woo woo, bool fromPressure)
         {
-            _particleSpawnerSystem.SpawnWooDestroyedParticle(woo,woo.Center.position, woo.Size, fromPressure);
+            _particleSpawnerSystem.SpawnWooDestroyedParticle(woo, woo.Center.position, woo.Size, fromPressure);
             _woos.Remove(woo);
-            UnityEngine.Object.Destroy(woo.gameObject);
+            
+            if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject == woo.gameObject)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+            }
+            
+            woo.gameObject.SetActive(false);
+            UnityEngine.Object.Destroy(woo.gameObject, 0.1f); // Then destroy it
         }
         
         public IEnumerable<Woo> GetWoos()
