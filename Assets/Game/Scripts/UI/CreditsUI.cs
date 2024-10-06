@@ -49,7 +49,7 @@ namespace Game.Scripts.UI
             await UniTask.Delay(7000);
             
             _playAgainButton.transform.localScale = Vector3.zero;
-            _playAgainButton.gameObject.SetActive(true);
+            // _playAgainButton.gameObject.SetActive(true);
             _playAgainButton.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.InOutSine).SetAutoKill(true);
             
             var completionSource = new UniTaskCompletionSource();
