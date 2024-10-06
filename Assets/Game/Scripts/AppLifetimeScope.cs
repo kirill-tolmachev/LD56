@@ -5,6 +5,7 @@ using Game.Scripts.States;
 using Game.Scripts.States.Levels;
 using Game.Scripts.Systems;
 using Game.Scripts.UI;
+using Game.Scripts.UI.Progress;
 using Game.Scripts.Util;
 using UnityEngine;
 using VContainer;
@@ -26,8 +27,8 @@ namespace Game.Scripts
             builder.RegisterComponentInHierarchy<NarrationUI>().AsSelf();
             builder.RegisterComponentInHierarchy<Environment>().AsSelf();
             builder.RegisterComponentInHierarchy<CameraShake>().AsSelf();
+            builder.RegisterComponentInHierarchy<CreditsUI>().AsSelf();
             
-            builder.RegisterComponentInHierarchy<LevelUI>().AsSelf();
             builder.RegisterComponentInHierarchy<LevelCompletedUI>().AsSelf();
             builder.RegisterComponentInHierarchy<LevelFailedUI>().AsSelf();
             
@@ -51,8 +52,17 @@ namespace Game.Scripts
             builder.Register<Level5>(Lifetime.Transient).AsSelf();
             builder.Register<Level6_Corp>(Lifetime.Transient).AsSelf();
             builder.Register<Level6_Rebel>(Lifetime.Transient).AsSelf();
+            builder.Register<CreditsState>(Lifetime.Transient).AsSelf();
             builder.Register<LevelCompletedState>(Lifetime.Transient).AsSelf();
             builder.Register<LevelFailedState>(Lifetime.Transient).AsSelf();
+            
+            
+            builder.RegisterComponentInHierarchy<Level1UI>().AsSelf();
+            builder.RegisterComponentInHierarchy<Level2UI>().AsSelf();
+            builder.RegisterComponentInHierarchy<Level3UI>().AsSelf();
+            builder.RegisterComponentInHierarchy<Level4UI>().AsSelf();
+            builder.RegisterComponentInHierarchy<Level5UI>().AsSelf();
+            builder.RegisterComponentInHierarchy<Level6UI>().AsSelf();
         }
 
         private void Start()

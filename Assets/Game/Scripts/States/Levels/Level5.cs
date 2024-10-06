@@ -4,13 +4,14 @@ using Game.Scripts.Config;
 using Game.Scripts.Entities;
 using Game.Scripts.Systems;
 using Game.Scripts.UI;
+using Game.Scripts.UI.Progress;
 using Game.Scripts.Util;
 
 namespace Game.Scripts.States.Levels
 {
     public class Level5 : GameState
     {
-        private readonly LevelUI _levelUI;
+        private readonly Level5UI _levelUI;
         private readonly LevelState _levelState;
         private readonly CameraShake _cameraShake;
         private readonly AudioManager _audioManager;
@@ -19,7 +20,7 @@ namespace Game.Scripts.States.Levels
         private readonly Narrators _narrators;
         private readonly Environment _environment;
 
-        public Level5(GameFSM gameFsm, LevelUI levelUI, LevelState levelState, CameraShake cameraShake, AudioManager audioManager, LevelResetSystem levelResetSystem, NarrationUI narrationUI, Narrators narrators, Environment environment) : base(gameFsm)
+        public Level5(GameFSM gameFsm, Level5UI levelUI, LevelState levelState, CameraShake cameraShake, AudioManager audioManager, LevelResetSystem levelResetSystem, NarrationUI narrationUI, Narrators narrators, Environment environment) : base(gameFsm)
         {
             _levelUI = levelUI;
             _levelState = levelState;
@@ -38,40 +39,39 @@ namespace Game.Scripts.States.Levels
             _narrationUI.Show();
             _environment.ToggleRightConveyor(true);
             _environment.ToggleLeftConveyor(true);
-            
-            await _narrationUI.ShowText("Great job <b>WORKER</b>!", _narrators.Triangle);
-            await _narrationUI.ShowText("I need to inform you that we have discovered <color=red><b>A PLOT TO SABOTAGE OUR OPERATIONS</b></color>", _narrators.Triangle);
-            await _narrationUI.ShowText("It looks like they are trying to inject <color=red><b>RED SQUARES</b></color> into the can.", _narrators.Triangle);
-            await _narrationUI.ShowText("For now proceed as usual - <b>SQUARES</b> on the left and <b>CIRCLES</b> on the right.", _narrators.Triangle);
-            await _narrationUI.ShowText("I will keep you updated.", _narrators.Triangle);
+            await _narrationUI.ShowText("Great job, <b>WORKER</b>!", _narrators.Triangle);
+            await _narrationUI.ShowText("I need to inform you that we've discovered <color=red><b>A PLOT TO SABOTAGE OUR OPERATIONS</b></color>.", _narrators.Triangle);
+            await _narrationUI.ShowText("It appears someone is trying to inject <color=red><b>RED SQUARES</b></color> into the can.", _narrators.Triangle);
+            await _narrationUI.ShowText("For now, proceed as usual: <b>SQUARES</b> on the left and <b>CIRCLES</b> on the right.", _narrators.Triangle);
+            await _narrationUI.ShowText("I'll keep you updated.", _narrators.Triangle);
             await _narrationUI.HideAsync();
-            
+
             await UniTask.Delay(2000, cancellationToken: cancellationToken);
             _audioManager.PlayExplosionAudio();
             await _cameraShake.TriggerShakeAsync(3f);
-            
+
             _narrationUI.Show();
-            await _narrationUI.ShowText("Hey you!", _narrators.Unknown);
-            await _narrationUI.ShowText("Yes, you! Listen!", _narrators.Unknown);
-            await _narrationUI.ShowText("We don't have much time. Your bosses have nearly discovered us.", _narrators.Rebel);
-            await _narrationUI.ShowText("We want to stop this madness. No Woos should be killed like this.", _narrators.Rebel);
-            await _narrationUI.ShowText("We are going to storm this place right now. Join us!", _narrators.Rebel);
-            await _narrationUI.ShowText("You are the only one who can help!", _narrators.Rebel);
-            await _narrationUI.ShowText("If you could make sure that at least <color=red><b>FIVE RED SQUARES</b></color> get into the can.", _narrators.Rebel);
-            await _narrationUI.ShowText("I will keep in touch with you.", _narrators.Rebel);
-            await _narrationUI.ShowText("Good luck!", _narrators.Rebel);
-            
+            await _narrationUI.ShowText("Hey, you!", _narrators.Unknown);
+            await _narrationUI.ShowText("Yes, you! Listen up!", _narrators.Unknown);
+            await _narrationUI.ShowText("We don't have much time. Your bosses are onto us.", _narrators.Rebel);
+            await _narrationUI.ShowText("We need to stop this madness. No Woos should be treated like this.", _narrators.Rebel);
+            await _narrationUI.ShowText("We're storming this place right now. Join us!", _narrators.Rebel);
+            await _narrationUI.ShowText("You're the only one who can help.", _narrators.Rebel);
+            await _narrationUI.ShowText("If you can ensure that at least <color=red><b>FIVE RED SQUARES</b></color> get into the can...", _narrators.Rebel);
+            await _narrationUI.ShowText("We'll be able to turn the tide.", _narrators.Rebel);
+            await _narrationUI.ShowText("I'll be in touch. Good luck!", _narrators.Rebel);
+
             await _narrationUI.HideAsync();
             
             _levelUI.gameObject.SetActive(true);
             _levelState.IsPaused = false;
-            _levelState.InvalidRedChance = 0.5f;
+            _levelState.InvalidRedChance = 0.1f;
             _levelState.InvalidNormalChance = 0.1f;
             _levelState.ScreenShakeInterval = 5f;
             
-            var waitForCorp = UniTask.WaitUntil(() => _levelState.CorrectWoos >= 50, cancellationToken: cancellationToken);
+            var waitForCorp = UniTask.WaitUntil(() => _levelState.CorrectWoos >= 100, cancellationToken: cancellationToken);
             var waitForRebel = UniTask.WaitUntil(() => _levelState.TotalRedSquares >= 5, cancellationToken: cancellationToken);
-            var waitForLose = UniTask.WaitUntil(() => _levelState.WrongWoos >= 10, cancellationToken: cancellationToken);
+            var waitForLose = UniTask.WaitUntil(() => _levelState.WrongWoos >= 15, cancellationToken: cancellationToken);
 
             int result = await UniTask.WhenAny(waitForCorp, waitForRebel, waitForLose);
 

@@ -29,18 +29,18 @@ namespace Game.Scripts.UI
             if (_scaleChildren == null)
                 _scaleChildren = GetComponentsInChildren<ScaleChild>();
             
-            foreach (var scaleChild in _scaleChildren)
-            {
-                scaleChild.transform.localScale = Vector3.zero;
-            }
+            // foreach (var scaleChild in _scaleChildren)
+            // {
+            //     scaleChild.transform.localScale = Vector3.zero;
+            // }
             
             gameObject.SetActive(true);
             await transform.DOScale(Vector3.one, 0.2f).From(Vector3.one * 0.8f).SetEase(Ease.InOutSine).SetAutoKill(true);
-            
-            foreach (var scaleChild in _scaleChildren)
-            {
-                await scaleChild.transform.DOScale(Vector3.one, 0.5f).From(Vector3.zero).SetEase(Ease.InOutBounce).SetAutoKill(true);
-            }
+            //
+            // foreach (var scaleChild in _scaleChildren)
+            // {
+            //     // await scaleChild.transform.DOScale(Vector3.one, 0.5f).From(Vector3.zero).SetEase(Ease.InOutBounce).SetAutoKill(true);
+            // }
             
             _continueButton.interactable = true;
             
@@ -54,10 +54,10 @@ namespace Game.Scripts.UI
             
             _continueButton.onClick.RemoveListener(OnContinueButtonClick);
             
-            foreach (var scaleChild in _scaleChildren.Reverse())
-            {
-                await scaleChild.transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InOutBounce).SetAutoKill(true);
-            }
+            // foreach (var scaleChild in _scaleChildren.Reverse())
+            // {
+            //     await scaleChild.transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InOutBounce).SetAutoKill(true);
+            // }
             
             await transform.DOScale(Vector3.one * 0.8f, 0.2f).SetEase(Ease.InOutSine).SetAutoKill(true); 
             

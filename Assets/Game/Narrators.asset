@@ -19,7 +19,7 @@ MonoBehaviour:
     TextColor: {r: 0, g: 0, b: 0, a: 1}
   Rebel:
     Name: Rebel Square
-    Icon: {fileID: 0}
+    Icon: {fileID: 4357584587445433522, guid: 406900df461d94eeb86ab151e14ab5d0, type: 3}
     Color: {r: 0.30980393, g: 0.30980393, b: 0.30980393, a: 1}
     TextColor: {r: 1, g: 0, b: 0, a: 1}
   Unknown:

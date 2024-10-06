@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Game.Scripts.Entities;
 using Game.Scripts.UI;
+using Game.Scripts.UI.Progress;
 
 namespace Game.Scripts.Systems
 {
@@ -9,19 +10,23 @@ namespace Game.Scripts.Systems
         private HashSet<Woo> _woos = new();
         
         private readonly LevelState _levelState;
-        private readonly LevelUI _levelUI;
+        private readonly LevelUI[] _levelUIs;
 
-        public LevelResultSystem(LevelState levelState, LevelUI levelUI)
+        public LevelResultSystem(LevelState levelState, Level1UI levelUI, Level2UI level2UI, Level3UI level3UI, Level4UI level4UI, Level5UI level5UI, Level6UI level6UI)
         {
             _levelState = levelState;
-            _levelUI = levelUI;
+            _levelUIs = new LevelUI[] {levelUI, level2UI, level3UI, level4UI, level5UI, level6UI};
         }
 
         public void Reset()
         {
             _woos.Clear();
             _levelState.Reset();
-            _levelUI.StateChanged(_levelState);
+            
+            foreach (var levelUI in _levelUIs)
+            {
+                levelUI.StateChanged(_levelState);
+            }
         }
 
         public void AddWoo(Woo woo)
@@ -33,7 +38,7 @@ namespace Game.Scripts.Systems
 
             if (woo.Origin == null)
             {
-                _levelUI.StateChanged(_levelState);
+                StateChanged(_levelState);
                 return;
             }
 
@@ -59,7 +64,15 @@ namespace Game.Scripts.Systems
                 _levelState.TotalRedSquares++;
             }
             
-            _levelUI.StateChanged(_levelState);
+            StateChanged(_levelState);
+        }
+        
+        private void StateChanged(LevelState levelState)
+        {
+            foreach (var levelUI in _levelUIs)
+            {
+                levelUI.StateChanged(levelState);
+            }
         }
     }
 }

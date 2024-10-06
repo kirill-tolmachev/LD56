@@ -4,6 +4,7 @@ using Game.Scripts.Config;
 using Game.Scripts.Entities;
 using Game.Scripts.Systems;
 using Game.Scripts.UI;
+using Game.Scripts.UI.Progress;
 using Game.Scripts.Util;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace Game.Scripts.States.Levels
 {
     public class Level6_Rebel : GameState
     {
-        private readonly LevelUI _levelUI;
+        private readonly Level6UI _levelUI;
         private readonly LevelState _levelState;
         private readonly AudioManager _audioManager;
         private readonly CameraShake _cameraShaker;
@@ -21,7 +22,7 @@ namespace Game.Scripts.States.Levels
         private readonly Narrators _narrators;
         private readonly Environment _environment;
 
-        public Level6_Rebel(GameFSM gameFsm, LevelUI levelUI, LevelState levelState, AudioManager audioManager, CameraShake cameraShaker, ParticleSpawnerSystem particleSpawnerSystem, LevelResetSystem levelResetSystem, NarrationUI narrationUI, Narrators narrators, Environment environment) : base(gameFsm)
+        public Level6_Rebel(GameFSM gameFsm, Level6UI levelUI, LevelState levelState, AudioManager audioManager, CameraShake cameraShaker, ParticleSpawnerSystem particleSpawnerSystem, LevelResetSystem levelResetSystem, NarrationUI narrationUI, Narrators narrators, Environment environment) : base(gameFsm)
         {
             _levelUI = levelUI;
             _levelState = levelState;
@@ -44,12 +45,12 @@ namespace Game.Scripts.States.Levels
             _environment.ToggleLeftConveyor(true);
             
             await _narrationUI.ShowText("Great job!", _narrators.Rebel);
-            await _narrationUI.ShowText("Now we can finally destroy this hellish machine!", _narrators.Rebel);
-            await _narrationUI.ShowText("All you need to do is make sure <b>NO CIRCLES</b> get into the can from both ends.", _narrators.Rebel);
-            await _narrationUI.ShowText("Let's fill this thing with <b>SQUARES</b> for the final time!", _narrators.Rebel);
-            await _narrationUI.ShowText("Both <b>BLACK SQUARES</b> and <color=red><b>RED SQUARES</b></color> will do the job.", _narrators.Rebel);
-            await _narrationUI.ShowText("Just make sure that <b>NO MORE THAN 10 CIRCLES</b> get in the can.", _narrators.Rebel);
-            await _narrationUI.ShowText("You need to hold up for the last 30 seconds.", _narrators.Rebel);
+            await _narrationUI.ShowText("Now we can finally destroy this infernal machine!", _narrators.Rebel);
+            await _narrationUI.ShowText("All you need to do is ensure <b>NO CIRCLES</b> get into the can from either side.", _narrators.Rebel);
+            await _narrationUI.ShowText("Let's fill this thing with <b>SQUARES</b> one last time!", _narrators.Rebel);
+            await _narrationUI.ShowText("Both <b>BLACK SQUARES</b> and <color=red><b>RED SQUARES</b></color> will serve our purpose.", _narrators.Rebel);
+            await _narrationUI.ShowText("Just make sure that <b>NO CIRCLES</b> get into the can.", _narrators.Rebel);
+            await _narrationUI.ShowText("You need to hold out for the final 30 seconds.", _narrators.Rebel);
             
             await _narrationUI.ShowText("Good luck!", _narrators.Rebel);
             await _narrationUI.HideAsync();
@@ -67,7 +68,7 @@ namespace Game.Scripts.States.Levels
             _levelUI.ToggleTimer(true);
             
             var waitForWin = UniTask.Delay(timer * 1000, cancellationToken: cancellationToken);
-            var waitForLose = UniTask.WaitUntil(() => _levelState.TotalCircles >= 10, cancellationToken: cancellationToken);
+            var waitForLose = UniTask.WaitUntil(() => _levelState.TotalCircles >= 1, cancellationToken: cancellationToken);
 
             int result = await UniTask.WhenAny(waitForWin, waitForLose);
             _levelUI.ToggleTimer(false);
@@ -79,11 +80,12 @@ namespace Game.Scripts.States.Levels
             {
                 _particleSpawnerSystem.SpawnBigExplosion(Vector3.zero, Quaternion.identity);
                 _audioManager.PlayExplosionAudio();
+                _cameraShaker.TriggerShakeAsync(3f).Forget();
+                _environment.ToggleRightConveyorAsync(false).Forget();
+                _environment.ToggleLeftConveyorAsync(false).Forget();
+                _environment.ToggleCapsuleAsync(false).Forget();
                 
-                await _cameraShaker.TriggerShakeAsync(3f);
-                
-                
-                CompleteAndGoToLevel<Level1>(_levelState);
+                GameFsm.ChangeState<CreditsState>(new CreditsState.Context(true));
                 return;
             }
             

@@ -4,6 +4,7 @@ using Game.Scripts.Config;
 using Game.Scripts.Entities;
 using Game.Scripts.Systems;
 using Game.Scripts.UI;
+using Game.Scripts.UI.Progress;
 using Game.Scripts.Util;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace Game.Scripts.States.Levels
 {
     public class Level6_Corp : GameState
     {
-        private readonly LevelUI _levelUI;
+        private readonly Level6UI _levelUI;
         private readonly LevelState _levelState;
         private readonly AudioManager _audioManager;
         private readonly LevelResetSystem _levelResetSystem;
@@ -19,7 +20,7 @@ namespace Game.Scripts.States.Levels
         private readonly Narrators _narrators;
         private readonly Environment _environment;
 
-        public Level6_Corp(GameFSM gameFsm, LevelUI levelUI, LevelState levelState, AudioManager audioManager, LevelResetSystem levelResetSystem, NarrationUI narrationUI, Narrators narrators, Environment environment) : base(gameFsm)
+        public Level6_Corp(GameFSM gameFsm, Level6UI levelUI, LevelState levelState, AudioManager audioManager, LevelResetSystem levelResetSystem, NarrationUI narrationUI, Narrators narrators, Environment environment) : base(gameFsm)
         {
             _levelUI = levelUI;
             _levelState = levelState;
@@ -33,21 +34,20 @@ namespace Game.Scripts.States.Levels
         public override async UniTask OnRun(CancellationToken cancellationToken = default)
         {
             _levelResetSystem.Reset();
-            _audioManager.PlayReversedBackgroundMusic();
             
             _narrationUI.Show();
             
             _environment.ToggleRightConveyor(true);
             _environment.ToggleLeftConveyor(true);
             
-            await _narrationUI.ShowText("Great job!", _narrators.Rebel);
-            await _narrationUI.ShowText("Now we can finally destroy this hellish machine!", _narrators.Rebel);
-            await _narrationUI.ShowText("All you need to do is make sure <b>NO CIRCLES</b> get into the can from both ends.", _narrators.Rebel);
-            await _narrationUI.ShowText("Let's fill this thing with <b>SQUARES</b> for the final time!", _narrators.Rebel);
-            await _narrationUI.ShowText("Both <b>BLACK SQUARES</b> and <color=red><b>RED SQUARES</b></color> will do the job.", _narrators.Rebel);
-            await _narrationUI.ShowText("Just make sure there are <b>NO CIRCLES</b> in the can.", _narrators.Rebel);
-            
-            await _narrationUI.ShowText("Good luck!", _narrators.Rebel);
+            await _narrationUI.ShowText("<b>WORKER!</b>", _narrators.Triangle);
+            await _narrationUI.ShowText("We are under attack by these treacherous rebels!", _narrators.Triangle);
+            await _narrationUI.ShowText("But we will prevail if you follow my instructions exactly!", _narrators.Triangle);
+            await _narrationUI.ShowText("Ensure that <b>NO MORE THAN 10 SQUARES</b> get into the can.", _narrators.Triangle);
+            await _narrationUI.ShowText("That means no squares, red or black—<b>regardless of color</b>.", _narrators.Triangle);
+            await _narrationUI.ShowText("You only need to hold them off for 30 seconds.", _narrators.Triangle);
+
+            await _narrationUI.ShowText("Good luck!", _narrators.Triangle);
             await _narrationUI.HideAsync();
             
             
@@ -63,7 +63,7 @@ namespace Game.Scripts.States.Levels
             _levelUI.ToggleTimer(true);
             
             var waitForWin = UniTask.Delay(timerSeconds * 1000, cancellationToken: cancellationToken);
-            var waitForLose = UniTask.WaitUntil(() => _levelState.TotalCircles > 0, cancellationToken: cancellationToken);
+            var waitForLose = UniTask.WaitUntil(() => _levelState.TotalRedSquares + _levelState.TotalSquares >= 10, cancellationToken: cancellationToken);
 
             int result = await UniTask.WhenAny(waitForWin, waitForLose);
 
@@ -73,7 +73,7 @@ namespace Game.Scripts.States.Levels
             
             if (result == 0)
             {
-                CompleteAndGoToLevel<Level1>(_levelState);
+                GameFsm.ChangeState<CreditsState>(new CreditsState.Context(false));
                 return;
             }
             

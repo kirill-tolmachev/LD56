@@ -16,7 +16,7 @@ namespace Game.Scripts.States
 
         public override UniTask OnRun(CancellationToken cancellationToken = default)
         {
-            GameFsm.ChangeState<Level5>();
+            GameFsm.ChangeState<Level1>();
             return _splashScreen.ShowAsync();
         }
     }

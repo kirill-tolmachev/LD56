@@ -8,6 +8,7 @@ namespace Game.Scripts.Entities
     {
         public GameObject LeftConveyor;
         public GameObject RightConveyor;
+        public GameObject Capsule;
         
         public void ToggleLeftConveyor(bool value)
         {
@@ -19,17 +20,27 @@ namespace Game.Scripts.Entities
             RightConveyor.SetActive(value);
         }
         
+        public void ToggleCapsule(bool value)
+        {
+            Capsule.SetActive(value);
+        }
+        
         public UniTask ToggleRightConveyorAsync(bool value)
         {
-            return ToggleConveyorAsync(RightConveyor, value);
+            return ToggleObjectAsync(RightConveyor, value);
         }
         
         public UniTask ToggleLeftConveyorAsync(bool value)
         {
-            return ToggleConveyorAsync(LeftConveyor, value);
+            return ToggleObjectAsync(LeftConveyor, value);
+        }
+
+        public UniTask ToggleCapsuleAsync(bool value)
+        {
+            return ToggleObjectAsync(Capsule, value);
         }
         
-        public async UniTask ToggleConveyorAsync(GameObject conveyor, bool value)
+        public async UniTask ToggleObjectAsync(GameObject conveyor, bool value)
         {
             var startScale = value ? Vector3.zero : Vector3.one;
             var targetScale = value ? Vector3.one : Vector3.zero;

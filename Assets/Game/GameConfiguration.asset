@@ -22,5 +22,8 @@ MonoBehaviour:
   WooDestroyedParticlePrefab: {fileID: 3366300129327969660, guid: e0389d8f622964b5a89358ce9a58e3aa, type: 3}
   PressSqueezeParticlePrefab: {fileID: 3366300129327969660, guid: 57ce973b8ff494db69a6ea7715bb4471, type: 3}
   WooCreatedParticlePrefab: {fileID: 3366300129327969660, guid: 6c0de2bb6f02547108c341ee4537a78e, type: 3}
+  BigExplosionParticlePrefab: {fileID: 3366300129327969660, guid: fb168a53c6f294614b798b6fe4baa7a8, type: 3}
+  BackgroundMusicClip: {fileID: 8300000, guid: 8e0b7d702c4c44be587f7b5d539cd27c, type: 3}
+  ReversedBackgroundMusicClip: {fileID: 8300000, guid: 938b437a1e7a64f97befed08d909802c, type: 3}
   SwapWooAudioClip: {fileID: 8300000, guid: 0298278b3c9f14c67b26bb1ab6629f3f, type: 3}
   ExplosionAudioClip: {fileID: 8300000, guid: 4e8a038779fa440ab90ce85428435d2e, type: 3}
