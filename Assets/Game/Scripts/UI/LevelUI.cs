@@ -1,6 +1,8 @@
+using System.Globalization;
 using Game.Scripts.Entities;
 using TMPro;
 using UnityEngine;
+using VContainer;
 
 namespace Game.Scripts.UI
 {
@@ -12,6 +14,11 @@ namespace Game.Scripts.UI
         [SerializeField] private TMP_Text _totalRedSquaresText;
         [SerializeField] private TMP_Text _correctWoosText;
         [SerializeField] private TMP_Text _wrongWoosText;
+        
+        [SerializeField] private TMP_Text _timerText;
+        [SerializeField] private RectTransform _timerParent;
+        
+        [Inject] private LevelState LevelState;
         
         public void StateChanged(LevelState levelState)
         {
@@ -43,6 +50,22 @@ namespace Game.Scripts.UI
             if (_wrongWoosText != null)
             {
                 _wrongWoosText.text = levelState.WrongWoos.ToString();
+            }
+        }
+
+        private void Update()
+        {
+            if (_timerText != null)
+            {
+                _timerText.text = LevelState.CurrentTimer.ToString("0.00");
+            }
+        }
+
+        public void ToggleTimer(bool value)
+        {
+            if (_timerParent != null)
+            {
+                _timerParent.gameObject.SetActive(value);
             }
         }
     }

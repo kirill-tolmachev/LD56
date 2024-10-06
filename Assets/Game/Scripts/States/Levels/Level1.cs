@@ -33,8 +33,7 @@ namespace Game.Scripts.States.Levels
         public override async UniTask OnRun(CancellationToken cancellationToken = default)
         {
             _levelResetSystem.Reset();
-            _audioManager.BackgroundMusic.DOFade(1f, 0.5f).From(0f).SetEase(Ease.InOutSine).SetAutoKill(true);
-            _audioManager.BackgroundMusic.Play();
+            _audioManager.PlayNormalBackgroundMusic();
             
             _environment.ToggleLeftConveyor(false);
             _environment.ToggleRightConveyor(true);

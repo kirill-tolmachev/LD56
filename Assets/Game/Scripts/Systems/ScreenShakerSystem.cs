@@ -39,8 +39,6 @@ namespace Game.Scripts.Systems
             
             _cameraShake.TriggerShakeAsync(0.5f).Forget();
             _audioManager.PlayExplosionAudio();
-            
-            
         }
     }
 }

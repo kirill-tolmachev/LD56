@@ -69,7 +69,7 @@ namespace Game.Scripts.States.Levels
             _levelState.InvalidNormalChance = 0.1f;
             _levelState.ScreenShakeInterval = 5f;
             
-            var waitForCorp = UniTask.WaitUntil(() => _levelState.CorrectWoos == 5, cancellationToken: cancellationToken);
+            var waitForCorp = UniTask.WaitUntil(() => _levelState.CorrectWoos >= 50, cancellationToken: cancellationToken);
             var waitForRebel = UniTask.WaitUntil(() => _levelState.TotalRedSquares >= 5, cancellationToken: cancellationToken);
             var waitForLose = UniTask.WaitUntil(() => _levelState.WrongWoos >= 10, cancellationToken: cancellationToken);
 

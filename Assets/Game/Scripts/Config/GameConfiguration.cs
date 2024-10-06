@@ -23,8 +23,12 @@ namespace Game.Scripts.Config
         public ParticleSystem WooDestroyedParticlePrefab;
         public ParticleSystem PressSqueezeParticlePrefab;
         public ParticleSystem WooCreatedParticlePrefab;
+        public ParticleSystem BigExplosionParticlePrefab;
 
         [Header("Audio")] 
+        public AudioClip BackgroundMusicClip;
+        public AudioClip ReversedBackgroundMusicClip;
+        
         public AudioClip SwapWooAudioClip;
         public AudioClip ExplosionAudioClip;
     }

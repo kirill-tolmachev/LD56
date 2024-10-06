@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Game.Scripts.Entities
 {
     public class LevelState
@@ -21,6 +23,12 @@ namespace Game.Scripts.Entities
 
         public bool IsPaused { get; set; } = true;
         
+        public float TimerStartTime { get; set; }
+        
+        public float TimerMaxTime { get; set; }
+        
+        public float CurrentTimer => Mathf.Max(0f, TimerMaxTime - (Time.time - TimerStartTime));
+
         public void Reset()
         {
             CurrentScore = 0;
@@ -30,6 +38,9 @@ namespace Game.Scripts.Entities
             TotalWoos = 0;
             CorrectWoos = 0;
             WrongWoos = 0;
+            TimerStartTime = 0f;
+            TimerMaxTime = 0f;
+            
         }
     }
 }

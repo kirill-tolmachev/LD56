@@ -46,5 +46,10 @@ namespace Game.Scripts.Systems
             var main = ps.main;
             main.startColor = explosionColor;
         }
+        
+        public void SpawnBigExplosion(Vector3 position, Quaternion rotation)
+        {
+            var ps = _resolver.Instantiate(_gameConfiguration.BigExplosionParticlePrefab, position, rotation);
+        }
     }
 }
