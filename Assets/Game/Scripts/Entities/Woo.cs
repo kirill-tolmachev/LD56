@@ -7,7 +7,7 @@ using VContainer;
 
 namespace Game.Scripts.Entities
 {
-    public class Woo : MonoBehaviour, IPointerClickHandler
+    public class Woo : MonoBehaviour //, IPointerClickHandler
     {
         [SerializeField] private int _size;
         [SerializeField] private float _pressureThreshold = 10f; // Adjust this value as needed
@@ -22,8 +22,6 @@ namespace Game.Scripts.Entities
         
         public WooType Type;
         
-        public Slot Slot;
-        
         private bool _canDrag = true;
         private bool _isDragging;
         
@@ -34,8 +32,6 @@ namespace Game.Scripts.Entities
         public float PressureThreshold => _pressureThreshold;
         public int Size => _size;
         public Color Color = UnityEngine.Color.black;
-
-        public Capsule Capsule;
 
         [SerializeField] private float _explosionK = 1.5f;
         private bool _isExploding;
@@ -61,8 +57,6 @@ namespace Game.Scripts.Entities
         
         [Inject] private WooLifetimeSystem _wooLifetimeSystem;
         [Inject] private ScoreSystem _scoreSystem;
-        [Inject] private MergeSystem _mergeSystem;
-        [Inject] private DragDirectionArrow _dragDirectionArrow;
         
         private void Update()
         {
@@ -86,10 +80,10 @@ namespace Game.Scripts.Entities
             _isExploding = true;
             _wooLifetimeSystem.Destroy(this, true);
 
-            if (Capsule != null)
-            {
-                _scoreSystem.AddScore(Capsule, this);    
-            }
+            // if (Capsule != null)
+            // {
+            //     _scoreSystem.AddScore(Capsule, this);    
+            // }
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -97,80 +91,14 @@ namespace Game.Scripts.Entities
             _wooLifetimeSystem.Alter(this);
         }
 
-        public void OnDrag(PointerEventData eventData)
-        {
-            if (!_isDragging)
-                return;
-        }
-
         public void ToggleHighlight(bool isHighlighted)
         {
             _spriteRenderer.material = isHighlighted ? _highlightedMaterial : _normalMaterial;
         }
 
-        public void PlayJump(bool gravity = false)
-        {
-            _animator.SetTrigger("Jump");
-            if (gravity)
-                ToggleGravity(true);
-        }
-        
-        public UniTask MoveToSlot(Slot other)
-        {
-            Slot.Woo = null;
-            Slot = other;
-            other.Woo = this;
-            
-            transform.DOKill();
-            return transform.DOMoveX(other.transform.position.x, 0.2f).SetEase(Ease.InOutBack).SetId(transform).ToUniTask();
-        }
-
         public void ToggleGravity(bool isGravity)
         {
             CenterRigidbody2D.constraints = isGravity ? RigidbodyConstraints2D.None : RigidbodyConstraints2D.FreezePosition;
-        }
-        
-        // private void MakeKinematic()
-        // {
-        //     foreach (var rb in _rigidbodies)
-        //     {
-        //         rb.isKinematic = true;
-        //     }
-        //
-        //     foreach (var cld in Colliders)
-        //     {
-        //        cld.isTrigger = true;
-        //     }
-        // }
-        //
-        // private void MakeDynamic()
-        // {
-        //     foreach (var rb in _rigidbodies)
-        //     {
-        //         rb.isKinematic = false;
-        //     }
-        //     
-        //     foreach (var cld in Colliders)
-        //     {
-        //         cld.isTrigger = false;
-        //     }
-        // }
-
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            _isDragging = true;
-            _dragDirectionArrow.Show(Slot);
-        }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            _isDragging = false;
-            if (_dragDirectionArrow.SelectedSlot != null && _dragDirectionArrow.SelectedSlot.Woo != null)
-            {
-                _mergeSystem.Merge(this.Slot, _dragDirectionArrow.SelectedSlot);
-            }
-            
-            _dragDirectionArrow.Hide();
         }
     }
 }

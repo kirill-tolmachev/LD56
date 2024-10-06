@@ -35,7 +35,7 @@ namespace Game.Scripts.Entities
             
             var position = GunPoint.position;
             var randomType = GetRandomWooType();
-            _wooLifetimeSystem.Create(randomType, 1, position, _capsule);
+            _wooLifetimeSystem.Create(randomType, 1, position);
         }
 
         private WooType GetRandomWooType()

@@ -29,4 +29,9 @@ public class BlinkAnimation : MonoBehaviour
     {
         DOTween.Kill(_target);
     }
+    
+    void OnDestroy()
+    {
+        DOTween.Kill(_target);
+    }
 }

@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: CenterRigidbody2D
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 339697206531534272, guid: a101d83c8c792430cb1dcede788729c5, type: 3}
+      propertyPath: _highlightedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 4eae4f56b5ebf485badda73317e070a4, type: 2}
     - target: {fileID: 6670842034079707329, guid: a101d83c8c792430cb1dcede788729c5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

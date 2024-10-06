@@ -13,9 +13,6 @@ namespace Game.Scripts.Entities
         
         public WooType ExpectedWooType;
         
-        public Slot[] Slots;
-        public Gear[] Gears;
-
         private readonly HashSet<Woo> _woos = new();
 
         private float _lastMoveTime;
@@ -37,14 +34,6 @@ namespace Game.Scripts.Entities
             
             _woos.Remove(woo);
         }
-        
-        private void Start()
-        {
-            for (int i = 0; i < Slots.Length; i++)
-            {
-                Slots[i].Initialize(this, i == 0 ? null : Slots[i - 1], i == Slots.Length - 1 ? null : Slots[i + 1]);
-            }
-        }
 
         private void Update()
         {
@@ -62,45 +51,12 @@ namespace Game.Scripts.Entities
                 }
                 
                 var targetPosition = woo.transform.position + Vector3.right * _moveSpeed;
-                woo.transform.DOMoveX(targetPosition.x, 0.2f).SetEase(Ease.InOutBack).SetId(woo.transform);
+                woo.transform.DOMoveX(targetPosition.x, 0.2f).SetEase(Ease.InOutBack).SetId(woo.transform).SetAutoKill(true);
             }
             
             foreach (var destroyedWoo in destroyed)
             {
                 _woos.Remove(destroyedWoo);
-            }
-        }
-
-        public async UniTask MoveSlotsAfterMerge(Slot self, Slot other)
-        {
-            var selfIndex = Array.IndexOf(Slots, self);
-            var otherIndex = Array.IndexOf(Slots, other);
-            
-            var maxIndex = Math.Max(selfIndex, otherIndex);
-
-            foreach (var gear in Gears)
-            {
-                gear.IsRotating = true;
-            }
-            
-            var tasks = new List<UniTask>();
-            for (int i = maxIndex + 1; i < Slots.Length; i++)
-            {
-                var slot = Slots[i];
-                
-                if (slot.Woo != null)
-                {
-                    Debug.Log("MoveSlotsAfterMerge: moving " + slot.Woo.Slot.Conveyor.gameObject.name + " to " + Slots[i - 1].Conveyor.gameObject.name + " at " + (i - 1));
-                    var task = slot.Woo.MoveToSlot(Slots[i - 1]);
-                    tasks.Add(task);
-                }
-            }
-            
-            await UniTask.WhenAll(tasks);
-            
-            foreach (var gear in Gears)
-            {
-                gear.IsRotating = false;
             }
         }
     }

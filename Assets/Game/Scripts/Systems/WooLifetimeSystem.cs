@@ -37,18 +37,10 @@ namespace Game.Scripts.Systems
             _woos.Clear();
         }
         
-        public Woo Create(WooType type, int size, Vector3 position, Capsule capsule = null, Slot slot = null)
+        public Woo Create(WooType type, int size, Vector3 position)
         {
             var prefab = GetPrefab(type, size);
             var woo = _objectResolver.Instantiate(prefab, position, Quaternion.identity);
-            woo.Capsule = capsule;
-            woo.Slot = slot;
-
-            if (slot != null)
-            {
-                slot.Woo = woo;
-                _particleSpawnerSystem.SpawnWooCreatedParticle(position, Color.black);
-            }
             
             _woos.Add(woo, Time.time);
             
@@ -105,8 +97,9 @@ namespace Game.Scripts.Systems
             var newType = woo.Type == WooType.Circle ? WooType.Square : WooType.Circle;
             var pos = woo.transform.position;
             var size = woo.Size;
+            
             Destroy(woo, false);
-            Create(newType, size, pos, null, null);
+            Create(newType, size, pos);
         }
     }
 }
