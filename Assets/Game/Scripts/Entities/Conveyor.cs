@@ -11,6 +11,8 @@ namespace Game.Scripts.Entities
         [SerializeField] private float _moveInterval = 1.33f;
         [SerializeField] private float _moveSpeed = 2f;
         
+        public WooType ExpectedWooType;
+        
         public Slot[] Slots;
         public Gear[] Gears;
 

@@ -94,7 +94,7 @@ namespace Game.Scripts.Entities
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            _wooLifetimeSystem.Destroy(this, false);
+            _wooLifetimeSystem.Alter(this);
         }
 
         public void OnDrag(PointerEventData eventData)

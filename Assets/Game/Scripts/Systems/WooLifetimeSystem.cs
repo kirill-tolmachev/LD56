@@ -99,5 +99,14 @@ namespace Game.Scripts.Systems
                 Destroy(woo, false);
             }
         }
+
+        public void Alter(Woo woo)
+        {
+            var newType = woo.Type == WooType.Circle ? WooType.Square : WooType.Circle;
+            var pos = woo.transform.position;
+            var size = woo.Size;
+            Destroy(woo, false);
+            Create(newType, size, pos, null, null);
+        }
     }
 }
