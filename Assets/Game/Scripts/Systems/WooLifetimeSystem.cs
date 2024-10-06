@@ -112,14 +112,23 @@ namespace Game.Scripts.Systems
 
         public void Alter(Woo woo)
         {
-            var newType = woo.Type == WooType.Circle ? WooType.Square : WooType.Circle;
-            var pos = woo.transform.position;
+            var newType = GetWooAlterType(woo);
+            var pos = woo.Center.position;
             var size = woo.Size;
             
             Destroy(woo, false);
             Create(newType, size, pos);
             
             _audioManager.PlaySwapWooAudio();
+        }
+
+        private WooType GetWooAlterType(Woo woo)
+        {
+            if (woo.Type == WooType.SquareRed && woo.Origin != null)
+                return woo.Origin.ExpectedWooType;
+            
+            return woo.Type == WooType.Circle ? WooType.Square : WooType.Circle;
+
         }
     }
 }
