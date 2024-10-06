@@ -34,7 +34,8 @@ namespace Game.Scripts.Entities
             _lastShotTime = Time.time;
             
             var position = GunPoint.position;
-            // _wooLifetimeSystem.Create(WooType.Square, 1, position, _capsule);
+            var randomType = Random.Range(0f, 2f) > 1 ? WooType.Square : WooType.Circle;
+            _wooLifetimeSystem.Create(randomType, 1, position, _capsule);
         }
     }
 }

@@ -1,6 +1,7 @@
 using Game.Scripts.Entities;
 using Game.Scripts.Util;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game.Scripts.Config
 {
@@ -23,5 +24,6 @@ namespace Game.Scripts.Config
         [Header("Particles")]
         public ParticleSystem WooDestroyedParticlePrefab;
         public ParticleSystem PressSqueezeParticlePrefab;
+        public ParticleSystem WooCreatedParticlePrefab;
     }
 }

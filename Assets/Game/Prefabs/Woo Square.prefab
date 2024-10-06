@@ -73,7 +73,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.05
+  m_Radius: 0.18
 --- !u!50 &5068019685538382554
 Rigidbody2D:
   serializedVersion: 5
@@ -248,7 +248,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.05
+  m_Radius: 0.18
 --- !u!50 &469537481624749498
 Rigidbody2D:
   serializedVersion: 5
@@ -526,7 +526,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.05
+  m_Radius: 0.18
 --- !u!50 &4010755132029179317
 Rigidbody2D:
   serializedVersion: 5
@@ -697,7 +697,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.32
+  m_Radius: 0.18
 --- !u!50 &1427887183944544550
 Rigidbody2D:
   serializedVersion: 5
@@ -797,7 +797,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.05
+  m_Radius: 0.18
 --- !u!50 &5803825129892871174
 Rigidbody2D:
   serializedVersion: 5
@@ -1059,7 +1059,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.05
+  m_Radius: 0.18
 --- !u!50 &2035005293129746923
 Rigidbody2D:
   serializedVersion: 5
@@ -1234,7 +1234,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.05
+  m_Radius: 0.18
 --- !u!50 &2249384197041078174
 Rigidbody2D:
   serializedVersion: 5
@@ -1409,7 +1409,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.05
+  m_Radius: 0.18
 --- !u!50 &3022505929275514353
 Rigidbody2D:
   serializedVersion: 5
@@ -1775,7 +1775,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.05
+  m_Radius: 0.18
 --- !u!50 &9154494202776613840
 Rigidbody2D:
   serializedVersion: 5
@@ -2131,6 +2131,10 @@ PrefabInstance:
       propertyPath: _spriteRenderer
       value: 
       objectReference: {fileID: 6766806107023173373}
+    - target: {fileID: 4138506072034997493, guid: 0e8a3542e931143408048a94cca3e525, type: 3}
+      propertyPath: CenterRigidbody2D
+      value: 
+      objectReference: {fileID: 1427887183944544550}
     - target: {fileID: 4138506072034997493, guid: 0e8a3542e931143408048a94cca3e525, type: 3}
       propertyPath: _highlightedMaterial
       value: 

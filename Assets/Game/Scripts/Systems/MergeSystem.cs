@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Game.Scripts.Entities;
 
 namespace Game.Scripts.Systems
@@ -21,6 +22,8 @@ namespace Game.Scripts.Systems
             
             var mergedType = GetMergedType(self.Woo.Type, other.Woo.Type);
             _wooLifetimeSystem.Create(mergedType, 1, self.transform.position, null, self);
+
+            self.Conveyor.MoveSlotsAfterMerge(self, other).Forget();
         }
         
         public WooType GetMergedType(WooType type1, WooType type2)

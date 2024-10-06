@@ -43,9 +43,12 @@ namespace Game.Scripts.Systems
             var woo = _objectResolver.Instantiate(prefab, position, Quaternion.identity);
             woo.Capsule = capsule;
             woo.Slot = slot;
-            
+
             if (slot != null)
+            {
                 slot.Woo = woo;
+                _particleSpawnerSystem.SpawnWooCreatedParticle(position);
+            }
             
             _woos.Add(woo, Time.time);
             

@@ -10,13 +10,6 @@ namespace Game.Scripts.Entities
 
         public Slot Left { get; private set; }
         public Slot Right { get; private set; }
-
-        public EdgeCollider2D BBox { get; private set; }
-        
-        private void Awake()
-        {
-            BBox = GetComponent<EdgeCollider2D>();
-        }
         
         public void Initialize(Conveyor conveyor, Slot left, Slot right)
         {

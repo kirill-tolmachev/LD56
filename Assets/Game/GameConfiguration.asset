@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerSpeed: 20
   PlayerRadius: 0.5
-  OutTubeShotInterval: 0.2
+  OutTubeShotInterval: 1.3333
   ProjectileSpeed: 10
   WooSizeScoreMultiplier: 0.2
   ProjectilePrefab: {fileID: -8021318568773682641, guid: 2a484578348d640d4a3d16f11b059318, type: 3}
@@ -23,3 +23,4 @@ MonoBehaviour:
   WooCircle: {fileID: 4138506072034997493, guid: 0e8a3542e931143408048a94cca3e525, type: 3}
   WooDestroyedParticlePrefab: {fileID: 3366300129327969660, guid: e0389d8f622964b5a89358ce9a58e3aa, type: 3}
   PressSqueezeParticlePrefab: {fileID: 3366300129327969660, guid: 57ce973b8ff494db69a6ea7715bb4471, type: 3}
+  WooCreatedParticlePrefab: {fileID: 3366300129327969660, guid: 6c0de2bb6f02547108c341ee4537a78e, type: 3}

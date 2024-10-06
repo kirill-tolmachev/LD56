@@ -1430,6 +1430,7 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 4042931492879440522}
   _normalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   _highlightedMaterial: {fileID: 2100000, guid: 5a6db85ebb9466f4b90af9ebdd3c4fdc, type: 2}
+  CenterRigidbody2D: {fileID: 8394942010525154512}
   Type: 0
   Slot: {fileID: 0}
   Capsule: {fileID: 0}
@@ -1448,10 +1449,10 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 3b5896c4999cd421fbcae5f012fc61b7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
+  m_AnimatePhysics: 1
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1

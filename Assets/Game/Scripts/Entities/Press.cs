@@ -58,7 +58,7 @@ namespace Game.Scripts.Entities
                 .AppendInterval(0.5f)
                 .AppendCallback(() => _playerState.IsPressDown = false)
                 .Append(transform.DOMoveY(_initialPosition.y, 0.2f).SetEase(Ease.InOutSine))
-                .OnComplete(() => _isPressing = false); // Reset pressing state after the sequence finishes
+                .OnComplete(() => _isPressing = false);
         }
     }
 }

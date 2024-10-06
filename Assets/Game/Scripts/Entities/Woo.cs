@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Game.Scripts.Systems;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -16,6 +18,8 @@ namespace Game.Scripts.Entities
         [SerializeField] private Material _normalMaterial;
         [SerializeField] private Material _highlightedMaterial;
 
+        public Rigidbody2D CenterRigidbody2D;
+        
         public WooType Type;
         
         public Slot Slot;
@@ -46,6 +50,11 @@ namespace Game.Scripts.Entities
             _animator = GetComponent<Animator>();
             
             ToggleHighlight(false);
+        }
+
+        private void Start()
+        {
+            // ToggleGravity(false);
         }
         
         [Inject] private WooLifetimeSystem _wooLifetimeSystem;
@@ -97,9 +106,26 @@ namespace Game.Scripts.Entities
             _spriteRenderer.material = isHighlighted ? _highlightedMaterial : _normalMaterial;
         }
 
-        public void PlayJump()
+        public void PlayJump(bool gravity = false)
         {
             _animator.SetTrigger("Jump");
+            if (gravity)
+                ToggleGravity(true);
+        }
+        
+        public UniTask MoveToSlot(Slot other)
+        {
+            Slot.Woo = null;
+            Slot = other;
+            other.Woo = this;
+            
+            transform.DOKill();
+            return transform.DOMoveX(other.transform.position.x, 0.2f).SetEase(Ease.InOutBack).SetId(transform).ToUniTask();
+        }
+
+        public void ToggleGravity(bool isGravity)
+        {
+            CenterRigidbody2D.constraints = isGravity ? RigidbodyConstraints2D.None : RigidbodyConstraints2D.FreezePosition;
         }
         
         // private void MakeKinematic()
