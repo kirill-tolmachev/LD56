@@ -22,7 +22,8 @@ public class BlinkAnimation : MonoBehaviour
             .Append(_target.DOScaleY(0f, _blinkSpeed).SetEase(Ease.InOutSine))
             .Append(_target.DOScaleY(_initialScale.y, _blinkSpeed).SetEase(Ease.InOutSine))
             .SetLoops(-1)
-            .SetId(_target);
+            .SetId(_target)
+            .SetAutoKill(true);
     }
     
     void OnDisable()

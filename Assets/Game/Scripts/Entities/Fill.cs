@@ -12,7 +12,7 @@ namespace Game.Scripts.Entities
         {
             float scaleY = Mathf.Clamp01(value) * (MaxScale - MinScale) + MinScale;
             transform.DOKill();
-            transform.DOScaleY(scaleY, 0.2f).SetEase(Ease.InOutSine).SetId(transform);
+            transform.DOScaleY(scaleY, 0.2f).SetEase(Ease.InOutSine).SetId(transform).SetAutoKill(true);
             return value;
         }
     }

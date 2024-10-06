@@ -19,12 +19,14 @@ namespace Game.Scripts.Entities
         
         private float _lastPressTime;
         private Capsule _capsule;
+        private LevelState _levelState;
         
         [Inject]
-        public void Construct(WooLifetimeSystem wooLifetimeSystem, PlayerState playerState)
+        public void Construct(WooLifetimeSystem wooLifetimeSystem, PlayerState playerState, LevelState levelState)
         {
             _wooLifetimeSystem = wooLifetimeSystem;
             _playerState = playerState;
+            _levelState = levelState;
         }
 
         private void Awake()
@@ -35,6 +37,9 @@ namespace Game.Scripts.Entities
 
         private void Update()
         {
+            if (_levelState.IsPaused)
+                return;
+            
             if (Time.time - _lastPressTime < _capsule.PressInterval)
                 return;
 

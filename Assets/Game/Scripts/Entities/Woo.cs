@@ -18,6 +18,8 @@ namespace Game.Scripts.Entities
         [SerializeField] private Material _normalMaterial;
         [SerializeField] private Material _highlightedMaterial;
 
+        public Conveyor Origin;
+        
         public Rigidbody2D CenterRigidbody2D;
         
         public WooType Type;

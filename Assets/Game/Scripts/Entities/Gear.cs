@@ -1,4 +1,5 @@
 using UnityEngine;
+using VContainer;
 
 namespace Game.Scripts.Entities
 {
@@ -6,9 +7,13 @@ namespace Game.Scripts.Entities
     {
         public bool IsRotating;
         public float RotationSpeed = 100f;
-
+        
+        [Inject] private LevelState _levelState;
+        
         private void Update()
         {
+            IsRotating = !_levelState.IsPaused;
+            
             if (!IsRotating)
                 return;
             

@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bbdc24736c4844b398f28c5bea52a7, type: 3}
   m_Name: GameConfiguration
   m_EditorClassIdentifier: 
-  PlayerSpeed: 20
-  PlayerRadius: 0.5
-  OutTubeShotInterval: 1.3333
-  ProjectileSpeed: 10
   WooSizeScoreMultiplier: 0.2
+  Narrators: {fileID: 11400000, guid: 9605190cc78324461b23d926b5ca87d5, type: 2}
   ProjectilePrefab: {fileID: -8021318568773682641, guid: 2a484578348d640d4a3d16f11b059318, type: 3}
   ProjectileBBoxPrefab: {fileID: 5596598118054252149, guid: 2f07aa5eb83bb4aa3a96d5aee0d715b5, type: 3}
   WooSquare: {fileID: 339697206531534272, guid: a101d83c8c792430cb1dcede788729c5, type: 3}
@@ -25,3 +22,5 @@ MonoBehaviour:
   WooDestroyedParticlePrefab: {fileID: 3366300129327969660, guid: e0389d8f622964b5a89358ce9a58e3aa, type: 3}
   PressSqueezeParticlePrefab: {fileID: 3366300129327969660, guid: 57ce973b8ff494db69a6ea7715bb4471, type: 3}
   WooCreatedParticlePrefab: {fileID: 3366300129327969660, guid: 6c0de2bb6f02547108c341ee4537a78e, type: 3}
+  SwapWooAudioClip: {fileID: 8300000, guid: 0298278b3c9f14c67b26bb1ab6629f3f, type: 3}
+  ExplosionAudioClip: {fileID: 8300000, guid: 4e8a038779fa440ab90ce85428435d2e, type: 3}

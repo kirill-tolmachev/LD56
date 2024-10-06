@@ -8,11 +8,8 @@ namespace Game.Scripts.Config
     [CreateAssetMenu(fileName = "GameConfiguration", menuName = "Game/GameConfiguration")]
     public class GameConfiguration : ScriptableObject
     {
-        public float PlayerSpeed = 20f;
-        public float PlayerRadius = 0.5f;
-        public float OutTubeShotInterval;
-        public float ProjectileSpeed = 10f;
         public float WooSizeScoreMultiplier = 0.3f;
+        public Narrators Narrators;
         
         [Header("Prefabs")]
         public Projectile ProjectilePrefab;
@@ -26,5 +23,9 @@ namespace Game.Scripts.Config
         public ParticleSystem WooDestroyedParticlePrefab;
         public ParticleSystem PressSqueezeParticlePrefab;
         public ParticleSystem WooCreatedParticlePrefab;
+
+        [Header("Audio")] 
+        public AudioClip SwapWooAudioClip;
+        public AudioClip ExplosionAudioClip;
     }
 }

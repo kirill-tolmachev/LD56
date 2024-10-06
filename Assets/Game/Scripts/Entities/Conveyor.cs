@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
+using VContainer;
 
 namespace Game.Scripts.Entities
 {
     public class Conveyor : MonoBehaviour
     {
-        [SerializeField] private float _moveInterval = 1.33f;
+        private float MoveInterval => 1.33f * _levelState.ConveyorInterval;
         [SerializeField] private float _moveSpeed = 2f;
+        [SerializeField] private Transform[] _gears;
+        
+        [Inject] private LevelState _levelState;
         
         public WooType ExpectedWooType;
         
@@ -23,6 +27,7 @@ namespace Game.Scripts.Entities
             if (woo == null)
                 return;
 
+            woo.Origin = this;
             _woos.Add(woo);
         }
         
@@ -37,11 +42,16 @@ namespace Game.Scripts.Entities
 
         private void Update()
         {
-            if (Time.time - _lastMoveTime < _moveInterval)
+            if (_levelState.IsPaused)
                 return;
             
+            if (Time.time - _lastMoveTime < MoveInterval)
+                return;
+            
+            float duration = 0.2f;
             _lastMoveTime = Time.time;
             List<Woo> destroyed = new();
+            
             foreach (var woo in _woos)
             {
                 if (!woo)
@@ -51,7 +61,13 @@ namespace Game.Scripts.Entities
                 }
                 
                 var targetPosition = woo.transform.position + Vector3.right * _moveSpeed;
-                woo.transform.DOMoveX(targetPosition.x, 0.2f).SetEase(Ease.InOutBack).SetId(woo.transform).SetAutoKill(true);
+                woo.transform.DOMoveX(targetPosition.x, duration).SetEase(Ease.InOutBack).SetId(woo.transform).SetAutoKill(true);
+            }
+            
+            foreach (var gear in _gears)
+            {
+                var newRotation = gear.localRotation * Quaternion.Euler(0, 0, -15f * _moveSpeed);
+                gear.DOLocalRotateQuaternion(newRotation, duration).SetEase(Ease.InOutBack).SetId(gear).SetAutoKill(true);
             }
             
             foreach (var destroyedWoo in destroyed)

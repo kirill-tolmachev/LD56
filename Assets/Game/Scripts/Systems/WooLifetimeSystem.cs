@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using DG.Tweening;
 using Game.Scripts.Config;
 using Game.Scripts.Entities;
+using Game.Scripts.Util;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -14,12 +17,14 @@ namespace Game.Scripts.Systems
         private readonly GameConfiguration _gameConfiguration;
         private readonly ParticleSpawnerSystem _particleSpawnerSystem;
         private readonly IObjectResolver _objectResolver;
+        private readonly AudioManager _audioManager;
 
-        public WooLifetimeSystem(GameConfiguration gameConfiguration, ParticleSpawnerSystem particleSpawnerSystem, IObjectResolver objectResolver)
+        public WooLifetimeSystem(GameConfiguration gameConfiguration, ParticleSpawnerSystem particleSpawnerSystem, IObjectResolver objectResolver, AudioManager audioManager)
         {
             _gameConfiguration = gameConfiguration;
             _particleSpawnerSystem = particleSpawnerSystem;
             _objectResolver = objectResolver;
+            _audioManager = audioManager;
         }
         
         public void Initialize()
@@ -41,11 +46,24 @@ namespace Game.Scripts.Systems
         {
             var prefab = GetPrefab(type, size);
             var woo = _objectResolver.Instantiate(prefab, position, Quaternion.identity);
+            var scale = woo.transform.localScale;
+            woo.transform.localScale = scale * 0.5f;
+            woo.transform.DOScale(scale, 0.2f).SetEase(Ease.OutBack).SetId(woo.transform).SetAutoKill(true);
             
             _woos.Add(woo, Time.time);
             
             
             return woo;
+        }
+
+        public void Reset()
+        {
+            foreach (var (woo, _) in _woos.ToList())
+            {
+                Destroy(woo, false);
+            }
+            
+            _woos.Clear();
         }
 
         public void Destroy(Woo woo, bool fromPressure)
@@ -100,6 +118,8 @@ namespace Game.Scripts.Systems
             
             Destroy(woo, false);
             Create(newType, size, pos);
+            
+            _audioManager.PlaySwapWooAudio();
         }
     }
 }
