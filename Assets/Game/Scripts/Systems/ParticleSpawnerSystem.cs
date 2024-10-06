@@ -21,15 +21,20 @@ namespace Game.Scripts.Systems
             _playerState = playerState;
         }
 
-        public void SpawnWooCreatedParticle(Vector3 position)
+        public void SpawnWooCreatedParticle(Vector3 position, Color color)
         {
-            _resolver.Instantiate(_gameConfiguration.WooCreatedParticlePrefab, position, Quaternion.identity);
+            var particle = _resolver.Instantiate(_gameConfiguration.WooCreatedParticlePrefab, position, Quaternion.identity);
+            var main = particle.main;
+            main.startColor = color;
         }
         
-        public void SpawnWooDestroyedParticle(Vector3 position, int size, bool fromPressure)
+        public void SpawnWooDestroyedParticle(Woo woo, Vector3 position, int size, bool fromPressure)
         {
             if (!fromPressure)
+            {
+                SpawnWooCreatedParticle(position, woo.Color);
                 return;
+            }
             
             var explosionColor = fromPressure ? Color.black : Color.red;
             if (fromPressure && _playerState.IsPressDown)

@@ -47,7 +47,7 @@ namespace Game.Scripts.Systems
             if (slot != null)
             {
                 slot.Woo = woo;
-                _particleSpawnerSystem.SpawnWooCreatedParticle(position);
+                _particleSpawnerSystem.SpawnWooCreatedParticle(position, Color.black);
             }
             
             _woos.Add(woo, Time.time);
@@ -56,11 +56,11 @@ namespace Game.Scripts.Systems
             return woo;
         }
 
-        public void Destroy(Woo wood, bool fromPressure)
+        public void Destroy(Woo woo, bool fromPressure)
         {
-            _particleSpawnerSystem.SpawnWooDestroyedParticle(wood.Center.position, wood.Size, fromPressure);
-            _woos.Remove(wood);
-            UnityEngine.Object.Destroy(wood.gameObject);
+            _particleSpawnerSystem.SpawnWooDestroyedParticle(woo,woo.Center.position, woo.Size, fromPressure);
+            _woos.Remove(woo);
+            UnityEngine.Object.Destroy(woo.gameObject);
         }
         
         public IEnumerable<Woo> GetWoos()
@@ -76,6 +76,8 @@ namespace Game.Scripts.Systems
                     return _gameConfiguration.WooCircle;
                 case WooType.Square:
                     return _gameConfiguration.WooSquare;
+                case WooType.SquareRed:
+                    return _gameConfiguration.WooSquareRed;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
@@ -83,19 +85,19 @@ namespace Game.Scripts.Systems
 
         public void Tick()
         {
-            // var expiredWoos = new List<Woo>();
-            // foreach (var (woo, lifetime) in _woos)
-            // {
-            //     if (Time.time - lifetime > woo.Lifetime)
-            //     {
-            //         expiredWoos.Add(woo);
-            //     }
-            // }
-            //
-            // foreach (var woo in expiredWoos)
-            // {
-            //     Destroy(woo, false);
-            // }
+            var expiredWoos = new List<Woo>();
+            foreach (var (woo, lifetime) in _woos)
+            {
+                if (Time.time - lifetime > woo.Lifetime)
+                {
+                    expiredWoos.Add(woo);
+                }
+            }
+            
+            foreach (var woo in expiredWoos)
+            {
+                Destroy(woo, false);
+            }
         }
     }
 }

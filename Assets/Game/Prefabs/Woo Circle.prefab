@@ -1433,6 +1433,7 @@ MonoBehaviour:
   CenterRigidbody2D: {fileID: 8394942010525154512}
   Type: 0
   Slot: {fileID: 0}
+  Color: {r: 0, g: 0, b: 0, a: 1}
   Capsule: {fileID: 0}
   _explosionK: 0.8
   Colliders: []

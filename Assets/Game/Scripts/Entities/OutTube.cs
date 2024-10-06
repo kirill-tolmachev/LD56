@@ -34,8 +34,20 @@ namespace Game.Scripts.Entities
             _lastShotTime = Time.time;
             
             var position = GunPoint.position;
-            var randomType = Random.Range(0f, 2f) > 1 ? WooType.Square : WooType.Circle;
+            var randomType = GetRandomWooType();
             _wooLifetimeSystem.Create(randomType, 1, position, _capsule);
+        }
+
+        private WooType GetRandomWooType()
+        {
+            var v = Random.Range(0f, 3f);
+            if (v < 1)
+                return WooType.Circle;
+            
+            if (v < 2)
+                return WooType.Square;
+            
+            return WooType.SquareRed;
         }
     }
 }

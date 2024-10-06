@@ -50,10 +50,22 @@ namespace Game.Scripts.Entities
                 return;
             
             _lastMoveTime = Time.time;
+            List<Woo> destroyed = new();
             foreach (var woo in _woos)
             {
+                if (!woo)
+                {
+                    destroyed.Add(woo);
+                    continue;
+                }
+                
                 var targetPosition = woo.transform.position + Vector3.right * _moveSpeed;
                 woo.transform.DOMoveX(targetPosition.x, 0.2f).SetEase(Ease.InOutBack).SetId(woo.transform);
+            }
+            
+            foreach (var destroyedWoo in destroyed)
+            {
+                _woos.Remove(destroyedWoo);
             }
         }
 

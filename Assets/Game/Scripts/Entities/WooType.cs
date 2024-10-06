@@ -4,5 +4,6 @@ namespace Game.Scripts.Entities
     {
         Circle,
         Square,
+        SquareRed,
     }
 }

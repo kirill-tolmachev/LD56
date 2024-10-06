@@ -7,7 +7,7 @@ using VContainer;
 
 namespace Game.Scripts.Entities
 {
-    public class Woo : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+    public class Woo : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] private int _size;
         [SerializeField] private float _pressureThreshold = 10f; // Adjust this value as needed
@@ -33,6 +33,8 @@ namespace Game.Scripts.Entities
         
         public float PressureThreshold => _pressureThreshold;
         public int Size => _size;
+        public Color Color = UnityEngine.Color.black;
+
         public Capsule Capsule;
 
         [SerializeField] private float _explosionK = 1.5f;
@@ -92,7 +94,7 @@ namespace Game.Scripts.Entities
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Debug.Log("Woo clicked");
+            _wooLifetimeSystem.Destroy(this, false);
         }
 
         public void OnDrag(PointerEventData eventData)

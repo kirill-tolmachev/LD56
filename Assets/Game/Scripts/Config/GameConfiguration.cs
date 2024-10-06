@@ -19,6 +19,7 @@ namespace Game.Scripts.Config
         public ProjectileBBox ProjectileBBoxPrefab;
         
         public Woo WooSquare;
+        public Woo WooSquareRed;
         public Woo WooCircle;
         
         [Header("Particles")]
