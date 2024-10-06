@@ -810,6 +810,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 344802524}
+  - {fileID: 343442408}
   m_Father: {fileID: 1363653974}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -835,8 +836,8 @@ MonoBehaviour:
   _totalRedSquaresText: {fileID: 626804869}
   _correctWoosText: {fileID: 0}
   _wrongWoosText: {fileID: 0}
-  _timerText: {fileID: 0}
-  _timerParent: {fileID: 0}
+  _timerText: {fileID: 1485902937}
+  _timerParent: {fileID: 343442408}
 --- !u!114 &157019433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2062,7 +2063,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &343442408
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2077,11 +2078,11 @@ RectTransform:
   m_Children:
   - {fileID: 842330211}
   - {fileID: 1485902936}
-  m_Father: {fileID: 1363653974}
+  m_Father: {fileID: 157019431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: 251}
+  m_AnchoredPosition: {x: -295.00003, y: 501}
   m_SizeDelta: {x: 300, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &343442409
@@ -8026,7 +8027,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 343442408}
   - {fileID: 1462635671}
   - {fileID: 862809776}
   - {fileID: 666634632}
