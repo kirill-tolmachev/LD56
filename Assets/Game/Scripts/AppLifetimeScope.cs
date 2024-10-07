@@ -7,6 +7,7 @@ using Game.Scripts.Systems;
 using Game.Scripts.UI;
 using Game.Scripts.UI.Progress;
 using Game.Scripts.Util;
+using GameAnalyticsSDK;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -68,6 +69,7 @@ namespace Game.Scripts
         private void Start()
         {
             DOTween.Init();
+            GameAnalytics.Initialize();
         }
     }
 }

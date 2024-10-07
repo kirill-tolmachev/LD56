@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using GameAnalyticsSDK;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -46,6 +47,9 @@ namespace Game.Scripts.UI
             await UniTask.Delay(7000);
             
             _text.text = "Thank you for playing";
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "full_complete_" + (curtain ? "corp" : "rebel"));
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "full_complete");
+            
             await UniTask.Delay(7000);
             
             _playAgainButton.transform.localScale = Vector3.zero;

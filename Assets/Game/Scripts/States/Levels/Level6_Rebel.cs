@@ -6,6 +6,7 @@ using Game.Scripts.Systems;
 using Game.Scripts.UI;
 using Game.Scripts.UI.Progress;
 using Game.Scripts.Util;
+using GameAnalyticsSDK;
 using UnityEngine;
 
 namespace Game.Scripts.States.Levels
@@ -37,6 +38,7 @@ namespace Game.Scripts.States.Levels
 
         public override async UniTask OnRun(CancellationToken cancellationToken = default)
         {
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "level_6_rebel");
             _levelResetSystem.Reset();
             _audioManager.PlayReversedBackgroundMusic();
             
@@ -86,6 +88,7 @@ namespace Game.Scripts.States.Levels
                 _environment.ToggleCapsuleAsync(false).Forget();
                 
                 GameFsm.ChangeState<CreditsState>(new CreditsState.Context(true));
+                GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "level_6_rebel");
                 return;
             }
             

@@ -6,6 +6,7 @@ using Game.Scripts.Systems;
 using Game.Scripts.UI;
 using Game.Scripts.UI.Progress;
 using Game.Scripts.Util;
+using GameAnalyticsSDK;
 using UnityEngine;
 
 namespace Game.Scripts.States.Levels
@@ -33,6 +34,7 @@ namespace Game.Scripts.States.Levels
 
         public override async UniTask OnRun(CancellationToken cancellationToken = default)
         {
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "level_6_corp");
             _levelResetSystem.Reset();
             
             _narrationUI.Show();
@@ -74,6 +76,7 @@ namespace Game.Scripts.States.Levels
             if (result == 0)
             {
                 GameFsm.ChangeState<CreditsState>(new CreditsState.Context(false));
+                GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "level_6_corp");
                 return;
             }
             

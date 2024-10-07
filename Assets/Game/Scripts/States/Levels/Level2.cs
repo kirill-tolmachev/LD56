@@ -6,6 +6,7 @@ using Game.Scripts.Systems;
 using Game.Scripts.UI;
 using Game.Scripts.UI.Progress;
 using Game.Scripts.Util;
+using GameAnalyticsSDK;
 
 namespace Game.Scripts.States.Levels
 {
@@ -30,6 +31,7 @@ namespace Game.Scripts.States.Levels
 
         public override async UniTask OnRun(CancellationToken cancellationToken = default)
         {
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "level_2");
             _levelResetSystem.Reset();
             
             _narrationUI.Show();
@@ -65,6 +67,7 @@ namespace Game.Scripts.States.Levels
             if (result == 0)
             {
                 CompleteAndGoToLevel<Level3>(_levelState);
+                GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "level_2");
                 return;
             }
             
