@@ -19,7 +19,7 @@ namespace Game.Scripts.States
         {
             var ctx = (Context)context;
 
-            await _levelCompletedUI.Show(ctx.LevelState);
+            await _levelCompletedUI.Show(ctx.LevelState, ctx.OverrideText);
             GameFsm.ChangeState(ctx.NextState);
         }
 
@@ -27,11 +27,13 @@ namespace Game.Scripts.States
         {
             public LevelState LevelState { get; }
             public Type NextState { get; }
+            public string OverrideText { get; }
 
-            public Context(LevelState levelState, Type nextState)
+            public Context(LevelState levelState, Type nextState, string overrideText = null)
             {
                 LevelState = levelState;
                 NextState = nextState;
+                OverrideText = overrideText;
             }
         }
     }

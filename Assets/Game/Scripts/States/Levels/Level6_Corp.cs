@@ -43,7 +43,7 @@ namespace Game.Scripts.States.Levels
             await _narrationUI.ShowText("<b>WORKER!</b>", _narrators.Triangle);
             await _narrationUI.ShowText("We are under attack by these treacherous rebels!", _narrators.Triangle);
             await _narrationUI.ShowText("But we will prevail if you follow my instructions exactly!", _narrators.Triangle);
-            await _narrationUI.ShowText("Ensure that <b>NO MORE THAN 10 SQUARES</b> get into the can.", _narrators.Triangle);
+            await _narrationUI.ShowText("Ensure that <b>NO MORE THAN 20 SQUARES</b> get into the can.", _narrators.Triangle);
             await _narrationUI.ShowText("That means no squares, red or black—<b>regardless of color</b>.", _narrators.Triangle);
             await _narrationUI.ShowText("You only need to hold them off for 30 seconds.", _narrators.Triangle);
 
@@ -53,7 +53,7 @@ namespace Game.Scripts.States.Levels
             
             _levelUI.gameObject.SetActive(true);
             _levelState.IsPaused = false;
-            _levelState.InvalidRedChance = 0.5f;
+            _levelState.InvalidRedChance = 0.3f;
             _levelState.InvalidNormalChance = 0.1f;
 
             int timerSeconds = 30;
@@ -63,7 +63,7 @@ namespace Game.Scripts.States.Levels
             _levelUI.ToggleTimer(true);
             
             var waitForWin = UniTask.Delay(timerSeconds * 1000, cancellationToken: cancellationToken);
-            var waitForLose = UniTask.WaitUntil(() => _levelState.TotalRedSquares + _levelState.TotalSquares >= 10, cancellationToken: cancellationToken);
+            var waitForLose = UniTask.WaitUntil(() => _levelState.TotalRedSquares + _levelState.TotalSquares >= 20, cancellationToken: cancellationToken);
 
             int result = await UniTask.WhenAny(waitForWin, waitForLose);
 

@@ -19,5 +19,6 @@ namespace Game.Scripts.Config
         public Narrator Triangle;
         public Narrator Rebel;
         public Narrator Unknown;
+        public Narrator Self;
     }
 }

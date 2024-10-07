@@ -27,3 +27,4 @@ MonoBehaviour:
   ReversedBackgroundMusicClip: {fileID: 8300000, guid: 938b437a1e7a64f97befed08d909802c, type: 3}
   SwapWooAudioClip: {fileID: 8300000, guid: 0298278b3c9f14c67b26bb1ab6629f3f, type: 3}
   ExplosionAudioClip: {fileID: 8300000, guid: 4e8a038779fa440ab90ce85428435d2e, type: 3}
+  SqueezeAudioClip: {fileID: 8300000, guid: 8377ae2bdd19d428cbd5da01d8b69e2e, type: 3}

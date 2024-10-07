@@ -31,5 +31,6 @@ namespace Game.Scripts.Config
         
         public AudioClip SwapWooAudioClip;
         public AudioClip ExplosionAudioClip;
+        public AudioClip SqueezeAudioClip;
     }
 }

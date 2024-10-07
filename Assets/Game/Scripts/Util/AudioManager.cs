@@ -43,6 +43,12 @@ namespace Game.Scripts.Util
             float pitch = Random.Range(0.7f, 1.1f);
             PlaySFX(_gameConfiguration.SwapWooAudioClip, pitch);
         }
+
+        public void PlaySqueeze()
+        {
+            float pitch = Random.Range(0.5f, 1.1f);
+            PlaySFX(_gameConfiguration.SqueezeAudioClip, pitch);
+        }
         
         public void PlayExplosionAudio()
         {

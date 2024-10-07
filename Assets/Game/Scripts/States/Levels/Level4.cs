@@ -50,7 +50,7 @@ namespace Game.Scripts.States.Levels
             
             _levelUI.gameObject.SetActive(true);
             _levelState.IsPaused = false;
-            _levelState.InvalidRedChance = 0.5f;
+            _levelState.InvalidRedChance = 0.25f;
             _levelState.InvalidNormalChance = 0.01f;
             
             var waitForWin = UniTask.WaitUntil(() => _levelState.CorrectWoos == 50, cancellationToken: cancellationToken);

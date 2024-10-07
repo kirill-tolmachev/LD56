@@ -60,12 +60,15 @@ namespace Game.Scripts.States.Levels
             await _narrationUI.ShowText("If you can ensure that at least <color=red><b>FIVE RED SQUARES</b></color> get into the can...", _narrators.Rebel);
             await _narrationUI.ShowText("We'll be able to turn the tide.", _narrators.Rebel);
             await _narrationUI.ShowText("I'll be in touch. Good luck!", _narrators.Rebel);
+            
+            await _narrationUI.ShowText("...", _narrators.Self);
+            await _narrationUI.ShowText("Should I listen to the square or should I operate normally?", _narrators.Self);
 
             await _narrationUI.HideAsync();
             
             _levelUI.gameObject.SetActive(true);
             _levelState.IsPaused = false;
-            _levelState.InvalidRedChance = 0.1f;
+            _levelState.InvalidRedChance = 0.25f;
             _levelState.InvalidNormalChance = 0.1f;
             _levelState.ScreenShakeInterval = 5f;
             
@@ -87,7 +90,7 @@ namespace Game.Scripts.States.Levels
 
             if (result == 1) // Rebel
             {
-                CompleteAndGoToLevel<Level6_Rebel>(_levelState);
+                CompleteAndGoToLevel<Level6_Rebel>(_levelState, "????????");
                 return;
             }
             

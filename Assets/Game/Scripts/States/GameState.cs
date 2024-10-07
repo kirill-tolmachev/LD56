@@ -21,9 +21,9 @@ namespace Game.Scripts.States
             GameFsm.ChangeState<LevelFailedState>(new LevelFailedState.Context(GetType()));
         }
         
-        protected void CompleteAndGoToLevel<TLevel>(LevelState levelState) where TLevel : GameState
+        protected void CompleteAndGoToLevel<TLevel>(LevelState levelState, string overrideWinText = null) where TLevel : GameState
         {
-            GameFsm.ChangeState<LevelCompletedState>(new LevelCompletedState.Context(levelState, typeof(TLevel)));
+            GameFsm.ChangeState<LevelCompletedState>(new LevelCompletedState.Context(levelState, typeof(TLevel), overrideWinText));
         }
     }
 }

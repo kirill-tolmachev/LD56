@@ -22,12 +22,16 @@ namespace Game.Scripts.UI
             _scaleChildren = GetComponentsInChildren<ScaleChild>();
         }
         
-        public async UniTask Show(LevelState levelState)
+        public async UniTask Show(LevelState levelState, string overrideText = null)
         {
             _continueButton.interactable = false;
             
             if (_scaleChildren == null)
                 _scaleChildren = GetComponentsInChildren<ScaleChild>();
+
+            string scoreText = _scoreText.text;
+            if (!string.IsNullOrEmpty(overrideText))
+                _scoreText.text = overrideText;
             
             // foreach (var scaleChild in _scaleChildren)
             // {
@@ -61,6 +65,7 @@ namespace Game.Scripts.UI
             
             await transform.DOScale(Vector3.one * 0.8f, 0.2f).SetEase(Ease.InOutSine).SetAutoKill(true); 
             
+            _scoreText.text = scoreText;
             gameObject.SetActive(false);
         }
     }
